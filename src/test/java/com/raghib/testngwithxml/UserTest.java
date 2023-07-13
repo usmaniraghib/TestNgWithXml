@@ -30,8 +30,7 @@ public class UserTest {
   @BeforeTest
   public void beforeTest() {
 		// Chrome Browser
-		System.setProperty("webdriver.chrome.driver",
-				"C:\\SELENIUM\\browser-driver\\chromedriver_win32\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\Driver\\chromedriver.exe");
 		webDriverObj = new ChromeDriver();
 		webDriverObj.manage().window().maximize();
 		webDriverObj.manage().deleteAllCookies();
