@@ -2,6 +2,12 @@
 # Create Maven Project in Jenkins
 # Add Project Goal
 
+//Local Repository
+https://www.youtube.com/watch?v=o2gAw929--g
+
+//GIT Repository
+https://www.youtube.com/watch?v=GlQHS7FdVGM
+
 https://maven.apache.org/
 
 Apache Maven 3.6.3
