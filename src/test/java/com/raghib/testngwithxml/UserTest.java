@@ -4,16 +4,21 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.raghib.selenium.BaseClass;
 
-public class UserTest {
+public class UserTest extends BaseClass {
+
+	public static String browserName = "chrome";
+	public static String browserVersion = "116";
+	
+	public static String url = "https://www.google.com/";
+	
 	WebDriver webDriverObj = null;
 	WebDriverWait webDriverWaitObj = null;
 	WebElement webElementObj = null;
@@ -29,14 +34,12 @@ public class UserTest {
 	@BeforeTest
 	public void beforeTest() {
 		// Chrome Browser
-		WebDriverManager.chromedriver().setup();
-		webDriverObj = new ChromeDriver();
-		webDriverObj.manage().window().maximize();
-		webDriverObj.manage().deleteAllCookies();
-
+		webDriverObj = BaseClass.getDriver(browserName, browserVersion);
 		webDriverObj.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
 		webDriverObj.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		webDriverObj.get("https://www.google.com/");
+		webDriverObj.manage().window().maximize();
+		webDriverObj.manage().deleteAllCookies();
+		webDriverObj.get(url);
 
 		// Refresh the browser.
 		webDriverObj.navigate().refresh();
@@ -54,8 +57,7 @@ public class UserTest {
 			System.out.println("Nothing to do with it");
 		} finally {
 			System.out.println("Finally Block - To close the driver");
-			webDriverObj.quit();
+			BaseClass.quitDriver();
 		}
 	}
-
 }

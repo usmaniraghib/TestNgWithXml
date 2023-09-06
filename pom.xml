@@ -12,33 +12,46 @@
  <!--  <url>http://maven.apache.org</url> -->
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>17</maven.compiler.source>
- 	<maven.compiler.target>17</maven.compiler.target>
-    <suiteXmlFile>testng.xml</suiteXmlFile>
-  </properties>
+		<maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<java.version>17</java.version>
+		<lombok-version>1.18.24</lombok-version>
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<selenium-java-version>4.12.0</selenium-java-version>
+	    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<testng-version>7.8.0</testng-version>
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<suiteXmlFile>testng.xml</suiteXmlFile>
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<project.encoding>UTF-8</project.encoding>
+		<project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
+	</properties>
 
-  <dependencies>
-	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+	<dependencies>
+
+		<!-- SELENIUM [4.12.0] DEPENDENCY-->
+
+		<!--
+		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.9.1</version>
+			<version>${selenium-java-version}</version>
 		</dependency>
+		
+		<!-- TESTNG [7.8.0] DEPENDENCY-->
 
-		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
-			<groupId>io.github.bonigarcia</groupId>
-			<artifactId>webdrivermanager</artifactId>
-			<version>5.3.3</version>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng-version}</version>
+			<scope>test</scope>
 		</dependency>
-	<dependency>
-		<groupId>org.testng</groupId>
-		<artifactId>testng</artifactId>
-		<version>7.3.0</version>
-		<scope>test</scope>
-	</dependency>
-  </dependencies>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
